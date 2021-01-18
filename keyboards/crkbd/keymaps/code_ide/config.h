@@ -35,8 +35,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL_PD2
 
 #define PERMISSIVE_HOLD
-#define TAPPING_TERM 200
+#define TAPPING_TERM 175
 #define IGNORE_MOD_TAP_INTERRUPT
+#define TAPPING_FORCE_HOLD_PER_KEY
 
 #ifdef RGBLIGHT_ENABLE
     #undef RGBLED_NUM
@@ -57,7 +58,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef RGB_MATRIX_ENABLE
 #   define RGB_MATRIX_KEYPRESSES // reacts to keypresses
 // #   define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
-#   define RGB_DISABLE_TIMEOUT 300000 // number of milliseconds to wait until disabling effects
+#   define RGB_DISABLE_TIMEOUT 450000 // number of milliseconds to wait until disabling effects
 #   define RGB_DISABLE_WHEN_USB_SUSPENDED true // turn off effects when suspended
 #   define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 #   define RGB_MATRIX_LED_PROCESS_LIMIT (DRIVER_LED_TOTAL + 4) / 5 // limits the number of LEDs to process in an animation per task run (increases keyboard responsiveness)
@@ -90,10 +91,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   define DISABLE_RGB_MATRIX_CYCLE_SPIRAL
 #   define DISABLE_RGB_MATRIX_RAINBOW_BEACON
 #   define DISABLE_RGB_MATRIX_RAINBOW_PINWHEELS
-// #   define DISABLE_RGB_MATRIX_RAINDROPS
+#   define DISABLE_RGB_MATRIX_RAINDROPS
 #   define DISABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-// #   define DISABLE_RGB_MATRIX_TYPING_HEATMAP
-// #   define DISABLE_RGB_MATRIX_DIGITAL_RAIN
+#   define DISABLE_RGB_MATRIX_TYPING_HEATMAP
+#   define DISABLE_RGB_MATRIX_DIGITAL_RAIN
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_SIMPLE
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_WIDE
@@ -103,7 +104,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_NEXUS
 #   define DISABLE_RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
 #   define DISABLE_RGB_MATRIX_SPLASH
-// #   define DISABLE_RGB_MATRIX_MULTISPLASH
+#   define DISABLE_RGB_MATRIX_MULTISPLASH
 #   define DISABLE_RGB_MATRIX_SOLID_SPLASH
 #   define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
 #endif
