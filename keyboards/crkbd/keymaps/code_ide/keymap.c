@@ -40,21 +40,21 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT(
     KC_ESC,          KC_Q,          KC_W,          KC_E,          KC_R,          KC_T,              KC_Y,          KC_U,          KC_I,          KC_O,          KC_P,            KC_BSPC,
-    KC_TAB,          LGUI_T(KC_A),  LALT_T(KC_S),  LCTL_T(KC_D),  LSFT_T(KC_F),  KC_G,              KC_H,          RSFT_T(KC_J),  RCTL_T(KC_K),  RALT_T(KC_L),  RGUI_T(KC_SCLN), KC_QUOT,
+    KC_TAB,          LGUI_T(KC_A),  LALT_T(KC_S),  LCTL_T(KC_D),  LSFT_T(KC_F),  KC_G,              KC_H,          RSFT_T(KC_J),  RCTL_T(KC_K),  LALT_T(KC_L),  RGUI_T(KC_SCLN), KC_QUOT,
     KC_LCTRL,        ALGR_T(KC_Z),  KC_X,          KC_C,          KC_V,          KC_B,              KC_N,          KC_M,          KC_COMM,       KC_DOT,        ALGR_T(KC_SLSH), KC_BSLS,
                                                  LT(3, KC_ESC),    LT(1,KC_SPC),    KC_TAB,    KC_BSPC,  LT(2,KC_ENT),   LT(3,KC_DEL)
   ),
 
   [_LOWER] = LAYOUT(
     KC_NO,           KC_F9,         KC_F10,        KC_F11,        KC_F12,        KC_NO,             KC_NUMLOCK,     KC_7,          KC_8,          KC_9,          KC_PPLS,         KC_PMNS,
-    KC_NO,           LGUI_T(KC_F5), LALT_T(KC_F6), LCTL_T(KC_F7), LSFT_T(KC_F8), KC_NO,             KC_NO,          RSFT_T(KC_4),  RCTL_T(KC_5),  RALT_T(KC_6),  RGUI_T(KC_PAST), KC_PSLS,
+    KC_NO,           LGUI_T(KC_F5), LALT_T(KC_F6), LCTL_T(KC_F7), LSFT_T(KC_F8), KC_NO,             KC_NO,          RSFT_T(KC_4),  RCTL_T(KC_5),  LALT_T(KC_6),  RGUI_T(KC_PAST), KC_PSLS,
     KC_NO,           KC_F1,         KC_F2,         KC_F3,         KC_F4,         KC_NO,             KC_NO,          KC_1,          KC_2,          KC_3,          KC_PDOT,         KC_PEQL,
                                                  KC_LGUI,          KC_TRNS,         KC_TRNS,    KC_TRNS,     KC_0,     KC_0
   ),
 
   [_RAISE] = LAYOUT(
     KC_GRV,          KC_APP,        KC_NO,         KC_LPRN,         KC_RPRN,         KC_EQL,         KC_NO,          KC_NO,         KC_UP,         KC_NO,         KC_PAUS,         KC_DEL,
-    KC_CAPS,         LGUI_T(KC_NO), LALT_T(KC_NO), LCTL_T(KC_LBRC), LSFT_T(KC_RBRC), KC_MINS,        KC_NO,          RSFT_T(KC_LEFT),RCTL_T(KC_DOWN),RALT_T(KC_RGHT),RGUI_T(KC_NO),KC_NO,
+    KC_CAPS,         LGUI_T(KC_NO), LALT_T(KC_NO), LCTL_T(KC_LBRC), LSFT_T(KC_RBRC), KC_MINS,        KC_NO,          RSFT_T(KC_LEFT),RCTL_T(KC_DOWN),LALT_T(KC_RGHT),RGUI_T(KC_NO),KC_NO,
     KC_INSERT,       KC_LT,         KC_GT,         KC_LCBR,       KC_RCBR,           KC_UNDS,        KC_NO,          KC_HOME,       KC_PGDN,       KC_END,        KC_PGUP,         KC_NO,
                                                               KC_LGUI,    KC_SPC,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_RALT
   ),
@@ -82,17 +82,34 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
         case LALT_T(KC_S):
         case LCTL_T(KC_D):
         case LSFT_T(KC_F):
-        case ALGR_T(KC_Z):
 
         case RSFT_T(KC_J):
         case RCTL_T(KC_K):
         case RALT_T(KC_L):
         case RGUI_T(KC_SCLN):
-        case ALGR_T(KC_SLSH):
 
             return true;
         default:
             return false;
+    }
+}
+
+// avoid slow pinky to trigger unexpected actions while typing
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return false;
+        default:
+            return true;
+    }
+}
+
+bool get_ignore_mod_tap_interrupt(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LGUI_T(KC_A):
+            return true;
+        default:
+            return true;
     }
 }
 
