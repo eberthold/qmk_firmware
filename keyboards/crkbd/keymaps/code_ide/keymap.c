@@ -60,7 +60,7 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
         case LT(2,KC_BSPC):
 
         // Main Layer Home-RowMods
-        case LGUI_T(KC_A):a
+        case LGUI_T(KC_A):
         case LALT_T(KC_S):
         case LCTL_T(KC_D):
         case LSFT_T(KC_F):
