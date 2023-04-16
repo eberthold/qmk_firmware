@@ -37,9 +37,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_RAISE] = LAYOUT_split_3x6_3(
-    KC_GRV,          KC_APP,        KC_NO,         KC_LPRN,         KC_RPRN,         KC_EQL,         KC_NO,          KC_NO,         KC_UP,         KC_NO,         KC_PAUS,         KC_DEL,
-    KC_CLCK,        LGUI_T(KC_NO), LALT_T(KC_NO), LCTL_T(KC_LBRC), LSFT_T(KC_RBRC), KC_MINS,        KC_NO,          RSFT_T(KC_LEFT),RCTL_T(KC_DOWN),LALT_T(KC_RGHT),RGUI_T(KC_NO),KC_NO,
-    KC_INSERT,       KC_LT,         KC_GT,         KC_LCBR,       KC_RCBR,           KC_UNDS,        KC_NO,          KC_HOME,       KC_PGDN,       KC_END,        KC_PGUP,         KC_NO,
+    KC_GRV,          KC_APP,        KC_NO,         KC_LPRN,         KC_RPRN,         KC_EQL,         KC_NO,          KC_NO,         KC_NO,         KC_NO,         KC_PAUS,         KC_DEL,
+    KC_CLCK,        LGUI_T(KC_NO), LALT_T(KC_NO), LCTL_T(KC_LBRC), LSFT_T(KC_RBRC), KC_MINS,        KC_LEFT,          RSFT_T(KC_DOWN),RCTL_T(KC_UP),LALT_T(KC_RGHT),RGUI_T(KC_NO),KC_NO,
+    KC_INSERT,       KC_LT,         KC_GT,         KC_LCBR,       KC_RCBR,           KC_UNDS,        KC_HOME,          KC_PGDN,       KC_PGUP,       KC_END,        KC_NO,         KC_NO,
                                                               KC_LGUI,    KC_SPC,    KC_TRNS,    KC_TRNS,    KC_TRNS,   KC_RALT
   ),
 
@@ -60,14 +60,14 @@ bool get_tapping_force_hold(uint16_t keycode, keyrecord_t *record) {
         case LT(2,KC_BSPC):
 
         // Main Layer Home-RowMods
-        case LGUI_T(KC_A):
+        case LGUI_T(KC_A):a
         case LALT_T(KC_S):
         case LCTL_T(KC_D):
         case LSFT_T(KC_F):
 
         case RSFT_T(KC_J):
         case RCTL_T(KC_K):
-        case RALT_T(KC_L):
+        case LALT_T(KC_L):
         case RGUI_T(KC_SCLN):
 
             return true;
