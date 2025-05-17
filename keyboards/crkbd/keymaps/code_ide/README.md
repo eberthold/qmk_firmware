@@ -6,3 +6,5 @@ This keymap aims to offer the best comfort for coding in an IDE which offers sho
 
 Based soumdmakers keymaps borrows cocepts from miryokus keymap.
 
+## Build command for new rp2040 controllers used
+qmk flash -kb crkbd -km code_ide -e CONVERT_TO=rp2040_ce
